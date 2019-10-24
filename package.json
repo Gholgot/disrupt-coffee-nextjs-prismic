@@ -1,0 +1,29 @@
+{
+  "name": "prismic-training-next",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [
+    "next"
+  ],
+  "description": "A sample website built using NextJS connected to Prismic data source",
+  "author": "Tony Jacomelli @gholgot",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^4.3.3",
+    "@zeit/next-sass": "^1.0.1",
+    "next": "9.1.1",
+    "node-sass": "^4.12.0",
+    "prismic-javascript": "^2.1.1",
+    "prismic-react": "0.0.2",
+    "prismic-reactjs": "^1.1.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^5.0.0-beta.8-groupsizefix",
+    "url-loader": "^2.2.0"
+  }
+}
