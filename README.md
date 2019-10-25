@@ -5,7 +5,7 @@
   </a>
   <h3><strong>+</strong></h3>
   <a href="https://prismic.io">
-    <img alt="Prismic" src="https://shorturl.at/mrDNT" width="120">
+    <img alt="Prismic" src="https://static.crozdesk.com/web_app_library/providers/logos/000/002/138/original/prismic.io-1559230283-logo.png?1559230283" width="120">
   </a>
 </div>
 <h1 align="center">
