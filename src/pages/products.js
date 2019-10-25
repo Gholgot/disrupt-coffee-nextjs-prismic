@@ -79,8 +79,8 @@ async function getHomeProduct(req) {
 
 Products.getInitialProps = async function (context) {
   const productList = await getProducts(context.req);
-  const homeProduct = await getHomeProduct(conrtext.req);
-  const layout = await getLayout(conrtext.req)
+  const homeProduct = await getHomeProduct(context.req);
+  const layout = await getLayout(context.req)
   return {
     homeProduct: homeProduct,
     products: productList,
