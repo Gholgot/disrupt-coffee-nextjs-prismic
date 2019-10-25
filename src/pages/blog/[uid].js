@@ -65,20 +65,20 @@ const BlogPost = props => {
   )
 }
 
-async function getLayout() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getLayout(req) {
+  const API = await Prismic.getApi(apiEndpoint, {req})
   return API.getSingle('layout');
 }
 
 
-async function getBlogPost(uid) {
-  const API = await Prismic.getApi(apiEndpoint);
+async function getBlogPost(uid, req) {
+  const API = await Prismic.getApi(apiEndpoint, req);
   return API.getByUID('blog_post', uid);
 }
 
 BlogPost.getInitialProps = async context => {
-  const layout = await getLayout();
-  const product = await getBlogPost(context.query.uid);
+  const layout = await getLayout(context.req);
+  const product = await getBlogPost(context.query.uid, context.req);
 
   return {
     blogPost: product,

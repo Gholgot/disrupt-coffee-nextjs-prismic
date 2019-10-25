@@ -61,25 +61,25 @@ const RenderBody = ({ blogHome, posts }) => (
   </React.Fragment>
 )
 
-async function getHomeBlog() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getHomeBlog(req) {
+  const API = await Prismic.getApi(apiEndpoint, {req})
   return  API.getSingle('blog_home');
 }
 
-async function getPosts() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getPosts(req) {
+  const API = await Prismic.getApi(apiEndpoint, {req})
   return API.query(Prismic.Predicates.at('document.type', 'blog_post'));
 }
 
-async function getLayout() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getLayout(req) {
+  const API = await Prismic.getApi(apiEndpoint, {req})
   return API.getSingle('layout');
 }
 
 Blog.getInitialProps = async function (context) {
-  const posts = await getPosts();
-  const blog = await getHomeBlog();
-  const layout = await getLayout()
+  const posts = await getPosts(context.req);
+  const blog = await getHomeBlog(context.req);
+  const layout = await getLayout(context.req)
   return {
     blog: blog,
     posts: posts,

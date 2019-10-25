@@ -60,19 +60,21 @@ class Layout extends React.Component {
     // Call to render the classic edit button
     // if (process.browser) window.prismic.setupEditButton();
 
-    return(
+    return (
       <React.Fragment>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{layoutData.site_name}</title>
           <link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" rel="stylesheet" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
+          ( <script>{`            window.prismic = {endpoint: 'https://prismic-nextjs-sample2tony.cdn.prismic.io/api/v2'};`}</script> )
+          ( <script type="text/javascript" src="https://static.cdn.prismic.io/prismic.min.js?new=true"></script> )
         </Helmet>
         <div className={`header${this.state.menuOpen ? ' header--is-nav-opened' : ''}`} id="header">
           <div className="header-inner">
             <Link href="/">
-            <a className="header-name">
-              {layoutData.site_name}
-            </a>
+              <a className="header-name">
+                {layoutData.site_name}
+              </a>
             </Link>
             <nav className="header-nav">
               {headerItems}
@@ -107,5 +109,5 @@ class Layout extends React.Component {
 }
 
 export default props => (
- <Layout data={props.data} {...props}/>
+  <Layout data={props.data} {...props} />
 )

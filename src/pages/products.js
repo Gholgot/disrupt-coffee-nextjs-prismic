@@ -62,25 +62,25 @@ const RenderBody = ({ productHome, products }) => (
   </React.Fragment>
 )
 
-async function getLayout() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getLayout(req) {
+  const API = await Prismic.getApi(apiEndpoint, req)
   return API.getSingle('layout');
 }
 
-async function getProducts() {
-  const API = await Prismic.getApi(apiEndpoint);
+async function getProducts(req) {
+const API = await Prismic.getApi(apiEndpoint, req);
   return API.query(Prismic.Predicates.at('document.type', 'product'));
 }
 
-async function getHomeProduct() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getHomeProduct(req) {
+  const API = await Prismic.getApi(apiEndpoint, req)
   return API.getSingle('products');
 }
 
 Products.getInitialProps = async function (context) {
-  const productList = await getProducts();
-  const homeProduct = await getHomeProduct();
-  const layout = await getLayout()
+  const productList = await getProducts(conrtext.req);
+  const homeProduct = await getHomeProduct(conrtext.req);
+  const layout = await getLayout(conrtext.req)
   return {
     homeProduct: homeProduct,
     products: productList,

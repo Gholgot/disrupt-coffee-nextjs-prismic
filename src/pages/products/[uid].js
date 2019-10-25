@@ -19,19 +19,23 @@ function handleClickAddCart(event) {
 }
 
 const RenderRelatedProducts = ({ related }) => {
-  return related.map(({product_related}) =>
+  if(related) {
+    return related.map(({product_related}) =>
     <div key={product_related.uid} className="products-grid-item-wrapper">
-      <img className="products-grid-item-image" src={product_related.data.product.image_url} alt="Coffee picture" />
-      <p className="products-grid-item-name">
-        <Link href="/products/[uid]" as={linkResolver(product_related)}>
-          <a>
-            {product_related.data.product.title}
-          </a>
-        </Link>
-      </p>
-      <p className="products-grid-item-subtitle">{RichText.asText(product_related.data.sub_title)}</p>
+    <img className="products-grid-item-image" src={product_related.data.product.image_url} alt="Coffee picture" />
+    <p className="products-grid-item-name">
+    <Link href="/products/[uid]" as={linkResolver(product_related)}>
+    <a>
+    {product_related.data.product.title}
+    </a>
+    </Link>
+    </p>
+    <p className="products-grid-item-subtitle">{RichText.asText(product_related.data.sub_title)}</p>
     </div>
-  )
+    )
+  } else {
+    return(<></>) 
+  }
 }
 
 const RenderRichDescription = (product) => {
@@ -120,14 +124,14 @@ const RenderBody = ({ product }) => (
   </React.Fragment>
 )
 
-async function getLayout() {
-  const API = await Prismic.getApi(apiEndpoint)
+async function getLayout(req) {
+  const API = await Prismic.getApi(apiEndpoint, {req})
   return API.getSingle('layout');
 }
 
 
-async function getProduct(uid) {
-  const API = await Prismic.getApi(apiEndpoint);
+async function getProduct(uid, req) {
+  const API = await Prismic.getApi(apiEndpoint, {req});
   return API.getByUID('product', uid, { 'fetchLinks': ['product.product', 'product.sub_title', 'product.uid'] });
 }
 
@@ -147,8 +151,8 @@ const Product = props => {
 }
 
 Product.getInitialProps = async context => {
-  const layout = await getLayout();
-  const product = await getProduct(context.query.uid);
+  const layout = await getLayout(context.req);
+  const product = await getProduct(context.query.uid, context.req);
 
   return {
     product: product,
