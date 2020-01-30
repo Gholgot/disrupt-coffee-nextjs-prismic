@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://nextjs.org/">
-    <img alt="Gatsby" src="https://shorturl.at/akmZ7" />
+    <img alt="NextJS" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.auth0.com%2Fblog%2Fnext3%2Flogo.png&f=1&nofb=1" />
   </a>
   <h3><strong>+</strong></h3>
   <a href="https://prismic.io">
